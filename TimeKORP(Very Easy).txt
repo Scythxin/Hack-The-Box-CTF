@@ -1,0 +1,24 @@
+Name: TimeKORP
+Type: Web CTF
+Time taken: ~30mins
+
+Downloaded the provided files and opened the IP address.
+
+In the website found 2 pages: What's the Time, What's the Date
+
+Checked the filed and found some useful PHP files named: TimeModel.php and TimeController.php
+
+Here GET request was being used to set a value to the variabe $format.
+
+But the value was accessible through the URL, so i tried to change the URL to check for injection.
+
+It worked, so I could try to inject some code through the URL.
+
+Then I tried to inject 'ls' which gave me the output -> views
+
+Therefore, injection was indeed possible.
+
+According to the format I created a payload to check what's inside the '../flag' file:
+';cat ../file' -> %27;cat%20../file%27
+
+Got the flag: HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3_9d71aa6f1ba382f487270fdeb4d920f6}

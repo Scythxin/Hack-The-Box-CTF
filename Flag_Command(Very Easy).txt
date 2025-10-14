@@ -1,0 +1,55 @@
+Name: Flag Command
+Type: Web CTF
+Time taken: ~30mins
+
+Opened the provided IP address.
+
+Started the game and tried XML injection, it didn't work.
+
+Opened the console and checked the js files: 
+command.js
+game.js
+main.js
+
+Didn't find anything noteworthy in command.js and game.js.
+
+In main.js found async function CheckMessage(), where I found:
+if(data.message.includes('HTB{')) {
+                    playerWon();
+                    fetchingResponse = false;
+
+                    return;
+}
+
+Tried putting it in:
+if (currentCommand == 'HEAD NORTH') {
+                    currentStep = '2';
+                }
+in place of 2, didn't work.
+
+Found:
+const fetchOptions = () => {
+    fetch('/api/options')
+        .then((data) => data.json())
+        .then((res) => {
+            availableOptions = res.allPossibleCommands;
+
+        })
+        .catch(() => {
+            availableOptions = undefined;
+        })
+}
+the webpage was fetching required information by using an API in JSON format.
+
+Checked the Network tab for more information and found an options GET request.
+
+In options I found:
+    "secret": [
+      "Blip-blop, in a pickle with a hiccup! Shmiggity-shmack"
+    ]
+as one of the options.
+
+Then I started another run and instead of HEAD NORTH I used the above option.
+
+This provided me with the flag:
+HTB{D3v3l0p3r_t00l5_4r3_b35t_wh4t_y0u_Th1nk??!_3371bf31609bd21b929a6559225dce73}

@@ -1,0 +1,16 @@
+Name: sush Protocol
+Type: ICS CTF
+Time taken: ~15mins
+
+Downloaded the provided zip file for the CTF.
+
+Checked they file type, it was pcapng.
+
+So I opened the file in WireShark and started going through the files.
+
+All the packets looked similar, some were: Unknown Function, Read Coils, Read Holding Registers, etc.
+
+On capture no. 35 I found the flag, I followed the packet and copied the packet.
+
+Flag was:
+HTB{50m371m35_cu570m_p2070c01_423_n07_3n0u9h7}

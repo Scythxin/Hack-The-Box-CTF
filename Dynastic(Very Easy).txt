@@ -1,0 +1,51 @@
+Name: Dynastic
+Type: Crypto CTF
+Time taken: ~40mins
+
+Downloaded the provided files:
+output.txt
+source.py 
+
+output.txt contained the flag but it was encrypted.
+
+checked source.py, it had various functions:
+def to_identity_map(a):
+    return ord(a) - 0x41
+this function took a value a and ord(a) converted it into its ASCII value, 0x41 -> Hex for 'A' = 65 in decimal
+So, if a = A then it returns 65 - 65 = 0 => value of A=0, similarly B=1, C=2 and so on.
+
+def from_identity_map(a):
+    return chr(a % 26 + 0x41)
+this function took a value a and chr(a % 26 + 0x41) will return the original value of the hashed value.
+So, if a = 0 then it returns chr(0 % 26 + 0x41) = chr(0+65) = A, similarly 1=B, 2=C and so on.
+
+def encrypt(m):
+    c = ''
+    for i in range(len(m)):
+        ch = m[i]
+        if not ch.isalpha():
+            ech = ch
+        else:
+            chi = to_identity_map(ch)
+            ech = from_identity_map(chi + i)
+        c += ech
+    return c
+this function is used for encryption, it takes the key as input and iterates over it.
+If the chr is not an alphanumeric value then stores it in ech as it is.
+Else it goes to the to_identity_map function and stores the value returned in chi variable.
+Then it goes to the from_identity_map function while taking (the hashed value + position of the chr in the key) as input and stores it in ech.
+
+This it then looped till the end of the key and then the encrypted key is returned.
+
+This key is then stored in the file output.txt.
+
+To decrypt it:
+I just provided the encrypted key in a new script with just one change:
+ech = from_identity_map(chi - i)
+Here instead of incrementing the position value I decremented it to find the original value of the encrypted key.
+
+And running this program provided me with the output:
+DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER
+
+Onto this I added the typical HTB format to find the key:
+HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER}

@@ -1,5 +1,7 @@
 Name: LootStash
+
 Type: Reversing CTF
+
 Time taken: ~2hr
 
 Downloaded the files from CTF.

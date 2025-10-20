@@ -72,7 +72,7 @@ undefined8 main(void)
 This is not the actual code behind the `casino` program but a speculation form Ghidra of how the actual code might be structured by analysing the underlying assembly.
 
 By looking at the decompiled code, we already get that there are 3 major Variables of whose role in the code is described below so you can find it easy to follow along.
-#### **1Var1**: 
+#### **iVar1**: 
 - To check if there was any input from the user(`iVar1 = __isoc99_scanf(&DAT_001020fc,&local_d);`) [Line 20]
 - To Store a random value generated from `rand()` which uses the User Input as seed in `srand()` [Line23]
 - To check against the correct value stored in `check` array (This `check` array is an external array(not stated in the code) which stores the target set of strings) [Line24]

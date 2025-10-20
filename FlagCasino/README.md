@@ -6,7 +6,7 @@
 
 **Challenge Points**: 950
 
-**Diffivulty**: Very Easy
+**Difficulty**: Very Easy
 
 ## Content
 Ghidra was used as the Decompiler in KaliLinux Virtual Environment.

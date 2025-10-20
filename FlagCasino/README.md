@@ -91,7 +91,7 @@ So the `check` array pointer basically stores the pseudo-random numbers generate
 1. Find the `check` array, it would look something like this in Ghidra:
 <img width="1168" height="666" alt="image" src="https://github.com/user-attachments/assets/9755bb5e-7a46-4faf-94b2-51e72d8a7b29" />
 
-2. The array values are stored in a textfile(hackerman.txt), but the values are in Little Endian form, we have to run a python script to arrange those values in a more manageable format; The below script was used for that purpose:
+2. The selection(array values) is copied and stored in a textfile(hackerman.txt), but the values are in Little Endian form, we have to run a python script to arrange those values in a more manageable format; The below script was used for that purpose:
 ```py
 with open("hackerman.txt", 'r') as file:
     content = file.read().split()
